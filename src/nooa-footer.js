@@ -46,7 +46,7 @@ export class NooaFooter extends DDDSuper(LitElement) {
       }
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--ddd-spacing-6);
         margin-bottom: var(--ddd-spacing-4);
       }
@@ -72,6 +72,17 @@ export class NooaFooter extends DDDSuper(LitElement) {
         border-top: 1px solid var(--ddd-theme-default-error);
         font-size: var(--ddd-font-size-s);
         color: var(--ddd-theme-default-roarLight);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 600px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: var(--ddd-spacing-4);
+        }
+        .footer-wrapper {
+          padding: var(--ddd-spacing-4);
+        }
       }
     `];
   }
@@ -106,4 +117,3 @@ export class NooaFooter extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaFooter.tag, NooaFooter);
-

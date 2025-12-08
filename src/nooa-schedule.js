@@ -21,9 +21,12 @@ export class NooaSchedule extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.scheduleItems = [
-      { date: "Dec 1, 2024", time: "10:00 AM", title: "Event 1", location: "Location 1" },
-      { date: "Dec 5, 2024", time: "2:00 PM", title: "Event 2", location: "Location 2" },
-      { date: "Dec 10, 2024", time: "6:00 PM", title: "Event 3", location: "Location 3" }
+      { date: "Dec 12, 2025", time: "7:00 PM", title: "Name-Your-Price: Cyber Hitman Auction", location: "IST Building 014" },
+      { date: "Dec 19, 2025", time: "6:00 PM", title: "Zero-Day Christmas Sale", location: "Westgate Building 101" },
+      { date: "Jan 16, 2026", time: "8:00 PM", title: "Advanced Persistent Trolling (APT) Night", location: "Virtual - Discord" },
+      { date: "Jan 23, 2026", time: "7:00 PM", title: "Hackers Anonymous", location: "IST Building 014" },
+      { date: "Feb 6, 2026", time: "6:30 PM", title: "Incident Response Bingo", location: "Westgate Building 101" },
+      { date: "Feb 20, 2026", time: "7:00 PM", title: "Living Off the Frat Land", location: "TBD - Check Discord" }
     ];
   }
 
@@ -62,7 +65,7 @@ export class NooaSchedule extends DDDSuper(LitElement) {
         border-radius: var(--ddd-radius-md);
         padding: var(--ddd-spacing-4);
         display: grid;
-        grid-template-columns: 150px 100px 1fr 150px;
+        grid-template-columns: 150px 100px 1fr 200px;
         gap: var(--ddd-spacing-4);
         align-items: center;
         box-shadow: var(--ddd-boxShadow-sm);
@@ -89,6 +92,8 @@ export class NooaSchedule extends DDDSuper(LitElement) {
         color: var(--ddd-theme-default-coalyGray);
         text-align: right;
       }
+      
+      /* Mobile styles */
       @media (max-width: 768px) {
         .schedule-item {
           grid-template-columns: 1fr;
@@ -104,7 +109,7 @@ export class NooaSchedule extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="schedule-container">
-        <h2>Schedule</h2>
+        <h2>Upcoming Events</h2>
         <div class="schedule-list">
           ${this.scheduleItems.map(item => html`
             <div class="schedule-item">
@@ -125,4 +130,3 @@ export class NooaSchedule extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaSchedule.tag, NooaSchedule);
-

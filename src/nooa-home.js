@@ -50,12 +50,14 @@ export class NooaHome extends DDDSuper(LitElement) {
       }
       .section-inner {
         width: 100%;
-        max-width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 0 var(--ddd-spacing-4);
         box-sizing: border-box;
       }
       .section.hero .section-inner {
         padding: 0;
+        max-width: 100%;
       }
       .section-title {
         text-align: center;
@@ -77,6 +79,19 @@ export class NooaHome extends DDDSuper(LitElement) {
       }
       .section.sponsors {
         background-color: var(--ddd-theme-default-white);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        .section {
+          padding: var(--ddd-spacing-4) 0;
+        }
+        .section-inner {
+          padding: 0 var(--ddd-spacing-3);
+        }
+        .section-title {
+          font-size: var(--ddd-font-size-xl);
+        }
       }
     `];
   }

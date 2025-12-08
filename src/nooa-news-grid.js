@@ -21,9 +21,24 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.articles = [
-      { title: "67", date: "11/30/25", excerpt: "67" },
-      { title: "67", date: "11/30/25", excerpt: "67" },
-      { title: "67", date: "11/30/25", excerpt: "67" }
+      { 
+        title: "Student cybersecurity team places third in global competition", 
+        date: "January 22, 2025", 
+        excerpt: "The Penn State Competitive Cyber Security Organization (CCSO) placed third at the Global Collegiate Penetration Testing Competition — CCSO's best showing in 10 years of this competition series.",
+        url: "https://www.psu.edu/news/information-sciences-and-technology/story/student-cybersecurity-team-places-third-global"
+      },
+      { 
+        title: "Inaugural Red vs. Blue cybersecurity competition held at University Park", 
+        date: "September 25, 2025", 
+        excerpt: "CCSO hosted its first full-scale Red vs. Blue cybersecurity competition — a live, hands-on event pitting attackers against defenders to replicate a real-world cyberattack experience.",
+        url: "https://ist.psu.edu/news/inaugural-red-vs-blue-cybersecurity-competition-held-at-university-park"
+      },
+      { 
+        title: "IST students win top spots at social engineering competition", 
+        date: "May 9, 2024", 
+        excerpt: "Two teams from the College of IST's Competitive Cyber Security Organization placed first and third in the 2024 Social Engineering Competition hosted by CARE Lab at Temple University.",
+        url: "https://www.psu.edu/news/information-sciences-and-technology/story/ist-students-win-top-spots-social-engineering-competition"
+      }
     ];
   }
 
@@ -56,13 +71,46 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
         padding: var(--ddd-spacing-3);
         box-shadow: var(--ddd-boxShadow-sm);
         transition: box-shadow 0.3s ease;
-        aspect-ratio: 1;
         width: 100%;
         max-width: 380px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
       }
+      .article-card:hover {
+        box-shadow: var(--ddd-boxShadow-md);
+      }
+      .article-title {
+        font-size: var(--ddd-font-size-m);
+        font-weight: var(--ddd-font-weight-bold);
+        color: var(--ddd-theme-default-error);
+        margin-bottom: var(--ddd-spacing-2);
+        line-height: 1.3;
+      }
+      .article-date {
+        font-size: var(--ddd-font-size-s);
+        color: var(--ddd-theme-default-coalyGray);
+        margin-bottom: var(--ddd-spacing-2);
+      }
+      .article-excerpt {
+        font-size: var(--ddd-font-size-s);
+        color: var(--ddd-theme-default-coalyGray);
+        line-height: 1.5;
+        flex: 1;
+      }
+      .read-more {
+        font-size: var(--ddd-font-size-s);
+        color: var(--ddd-theme-default-nittanyNavy);
+        font-weight: var(--ddd-font-weight-bold);
+        margin-top: var(--ddd-spacing-3);
+      }
+      .article-card:hover .read-more {
+        text-decoration: underline;
+      }
+      
+      /* Mobile styles */
       @media (max-width: 900px) {
         .news-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -76,25 +124,6 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
           grid-template-columns: 1fr;
         }
       }
-      .article-card:hover {
-        box-shadow: var(--ddd-boxShadow-md);
-      }
-      .article-title {
-        font-size: var(--ddd-font-size-xl);
-        font-weight: var(--ddd-font-weight-bold);
-        color: var(--ddd-theme-default-error);
-        margin-bottom: var(--ddd-spacing-2);
-      }
-      .article-date {
-        font-size: var(--ddd-font-size-s);
-        color: var(--ddd-theme-default-coalyGray);
-        margin-bottom: var(--ddd-spacing-2);
-      }
-      .article-excerpt {
-        font-size: var(--ddd-font-size-m);
-        color: var(--ddd-theme-default-coalyGray);
-        line-height: 1.5;
-      }
     `];
   }
 
@@ -102,11 +131,12 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
     return html`
       <div class="news-grid">
         ${this.articles.map(article => html`
-          <div class="article-card">
+          <a href="${article.url}" class="article-card" target="_blank" rel="noopener">
             <div class="article-title">${article.title}</div>
             <div class="article-date">${article.date}</div>
             <div class="article-excerpt">${article.excerpt}</div>
-          </div>
+            <div class="read-more">Read More →</div>
+          </a>
         `)}
       </div>
     `;
@@ -118,4 +148,3 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaNewsGrid.tag, NooaNewsGrid);
-

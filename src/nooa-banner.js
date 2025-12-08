@@ -60,9 +60,8 @@ export class NooaBanner extends DDDSuper(LitElement) {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+        background-color: rgba(0, 0, 0, 0.4);
         z-index: 1;
-        pointer-events: none;
       }
       .banner-content {
         position: absolute;
@@ -97,22 +96,50 @@ export class NooaBanner extends DDDSuper(LitElement) {
         font-size: var(--ddd-font-size-l);
         font-weight: var(--ddd-font-weight-bold);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease;
         text-decoration: none;
         box-shadow: var(--ddd-boxShadow-md);
       }
       .banner-cta:hover {
         background-color: var(--ddd-theme-default-nittanyNavy);
-        transform: translateY(-2px);
-        box-shadow: var(--ddd-boxShadow-lg);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        .banner-title {
+          font-size: var(--ddd-font-size-2xl);
+        }
+        .banner-subtitle {
+          font-size: var(--ddd-font-size-m);
+        }
+        .banner-cta {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
+          font-size: var(--ddd-font-size-m);
+        }
+      }
+      @media (max-width: 480px) {
+        .banner-content {
+          padding: var(--ddd-spacing-4);
+        }
+        .banner-title {
+          font-size: var(--ddd-font-size-xl);
+        }
+        .banner-subtitle {
+          font-size: var(--ddd-font-size-s);
+          margin-bottom: var(--ddd-spacing-4);
+        }
+        .banner-cta {
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-s);
+        }
       }
     `];
   }
 
   handleCtaClick(e) {
     e.preventDefault();
-    this.dispatchEvent(new CustomEvent('cta-click', {
-      detail: { ctaText: this.ctaText },
+    this.dispatchEvent(new CustomEvent('navigate', {
+      detail: { path: '/signup' },
       bubbles: true,
       composed: true
     }));
@@ -140,4 +167,3 @@ export class NooaBanner extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaBanner.tag, NooaBanner);
-

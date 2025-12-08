@@ -8,6 +8,7 @@ import "./nooa-menu.js";
 import "./nooa-header.js";
 import "./nooa-home.js";
 import "./nooa-schedule.js";
+import "./nooa-services.js";
 import "./nooa-login.js";
 import "./nooa-signup.js";
 import "./nooa-register.js";
@@ -78,8 +79,18 @@ export class NooaApp extends DDDSuper(LitElement) {
 
   handleNavigation(e) {
     if (e.detail && e.detail.path) {
-      this.route = e.detail.path;
-      window.history.pushState({}, "", e.detail.path);
+      // Extract path without hash for routing
+      const fullPath = e.detail.path;
+      const [path, hash] = fullPath.split('#');
+      this.route = path;
+      window.history.pushState({}, "", fullPath);
+      
+      // If there's a hash, scroll to it after a short delay
+      if (hash) {
+        setTimeout(() => {
+          window.location.hash = hash;
+        }, 100);
+      }
     }
   }
 
@@ -87,6 +98,8 @@ export class NooaApp extends DDDSuper(LitElement) {
     switch(this.route) {
       case '/schedule':
         return html`<nooa-schedule></nooa-schedule>`;
+      case '/services':
+        return html`<nooa-services></nooa-services>`;
       case '/login':
         return html`<nooa-login @navigate="${this.handleNavigation}"></nooa-login>`;
       case '/signup':
@@ -94,7 +107,7 @@ export class NooaApp extends DDDSuper(LitElement) {
       case '/register':
         return html`<nooa-register @navigate="${this.handleNavigation}"></nooa-register>`;
       default:
-        return html`<nooa-home></nooa-home>`;
+        return html`<nooa-home @navigate="${this.handleNavigation}"></nooa-home>`;
     }
   }
 

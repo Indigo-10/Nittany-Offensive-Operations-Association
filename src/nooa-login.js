@@ -64,6 +64,8 @@ export class NooaLogin extends DDDSuper(LitElement) {
         border: 2px solid var(--ddd-theme-default-error);
         border-radius: var(--ddd-radius-sm);
         font-size: var(--ddd-font-size-m);
+        width: 100%;
+        box-sizing: border-box;
       }
       input:focus {
         outline: none;
@@ -95,6 +97,19 @@ export class NooaLogin extends DDDSuper(LitElement) {
       }
       .signup-link a:hover {
         text-decoration: underline;
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 480px) {
+        :host {
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-3);
+        }
+        .login-container {
+          padding: var(--ddd-spacing-4);
+        }
+        h1 {
+          font-size: var(--ddd-font-size-xl);
+        }
       }
     `];
   }
@@ -155,4 +170,3 @@ export class NooaLogin extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaLogin.tag, NooaLogin);
-

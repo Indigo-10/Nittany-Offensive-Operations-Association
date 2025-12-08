@@ -66,19 +66,6 @@ export class NooaJoinGrid extends DDDSuper(LitElement) {
         justify-content: center;
         align-items: center;
       }
-      @media (max-width: 900px) {
-        .join-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .join-card {
-          max-width: 300px;
-        }
-      }
-      @media (max-width: 600px) {
-        .join-grid {
-          grid-template-columns: 1fr;
-        }
-      }
       .join-card:hover {
         transform: translateY(-4px);
         box-shadow: var(--ddd-boxShadow-md);
@@ -111,12 +98,28 @@ export class NooaJoinGrid extends DDDSuper(LitElement) {
         background-color: var(--ddd-theme-default-error);
         color: var(--ddd-theme-default-roarLight);
       }
+      
+      /* Mobile styles */
+      @media (max-width: 900px) {
+        .join-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .join-card {
+          max-width: 300px;
+        }
+      }
+      @media (max-width: 600px) {
+        .join-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     `];
   }
 
   handleJoin(e, action) {
-    this.dispatchEvent(new CustomEvent('join-click', {
-      detail: { action },
+    // Navigate to services page with hash to scroll to specific section
+    this.dispatchEvent(new CustomEvent('navigate', {
+      detail: { path: `/services#${action}` },
       bubbles: true,
       composed: true
     }));
@@ -142,4 +145,3 @@ export class NooaJoinGrid extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaJoinGrid.tag, NooaJoinGrid);
-

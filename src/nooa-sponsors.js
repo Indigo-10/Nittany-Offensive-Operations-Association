@@ -74,19 +74,6 @@ export class NooaSponsors extends DDDSuper(LitElement) {
         max-width: 380px;
         text-decoration: none;
       }
-      @media (max-width: 900px) {
-        .sponsors-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .sponsor-item {
-          max-width: 300px;
-        }
-      }
-      @media (max-width: 600px) {
-        .sponsors-grid {
-          grid-template-columns: 1fr;
-        }
-      }
       .sponsor-item:hover {
         transform: translateY(-4px);
         box-shadow: var(--ddd-boxShadow-md);
@@ -102,6 +89,21 @@ export class NooaSponsors extends DDDSuper(LitElement) {
       .sponsor-name {
         font-size: var(--ddd-font-size-s);
         color: var(--ddd-theme-default-roarLight);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 900px) {
+        .sponsors-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .sponsor-item {
+          max-width: 300px;
+        }
+      }
+      @media (max-width: 600px) {
+        .sponsors-grid {
+          grid-template-columns: 1fr;
+        }
       }
     `];
   }
@@ -128,4 +130,3 @@ export class NooaSponsors extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaSponsors.tag, NooaSponsors);
-

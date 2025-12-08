@@ -89,22 +89,35 @@ export class NooaHeader extends DDDSuper(LitElement) {
         text-transform: uppercase;
         letter-spacing: 1px;
         flex: 1;
-        white-space: nowrap;
         line-height: 1.2;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
-      @media (max-width: 900px) {
-        .association-name {
-          white-space: normal;
-          font-size: var(--ddd-font-size-l);
+      
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        .header-container {
+          padding-left: 52px;
+          gap: var(--ddd-spacing-3);
         }
         .logo {
-          max-width: 80px;
-          max-height: 60px;
+          max-width: 70px;
+          max-height: 50px;
         }
+        .association-name {
+          font-size: var(--ddd-font-size-m);
+        }
+      }
+      @media (max-width: 480px) {
         .header-container {
-          padding-left: 50px;
+          padding-left: 48px;
+          gap: var(--ddd-spacing-2);
+        }
+        .logo {
+          max-width: 50px;
+          max-height: 40px;
+        }
+        .association-name {
+          font-size: var(--ddd-font-size-s);
+          letter-spacing: 0;
         }
       }
     `];
@@ -133,4 +146,3 @@ export class NooaHeader extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaHeader.tag, NooaHeader);
-

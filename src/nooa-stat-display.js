@@ -48,11 +48,6 @@ export class NooaStatDisplay extends DDDSuper(LitElement) {
         gap: var(--ddd-spacing-4);
         width: 100%;
       }
-      @media (max-width: 700px) {
-        .stats-container {
-          grid-template-columns: 1fr;
-        }
-      }
       .stat-card {
         background-color: var(--ddd-theme-default-white);
         border: var(--ddd-border-md);
@@ -70,6 +65,13 @@ export class NooaStatDisplay extends DDDSuper(LitElement) {
       .stat-label {
         font-size: var(--ddd-font-size-m);
         color: var(--ddd-theme-default-coalyGray);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 700px) {
+        .stats-container {
+          grid-template-columns: 1fr;
+        }
       }
     `];
   }
@@ -93,4 +95,3 @@ export class NooaStatDisplay extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaStatDisplay.tag, NooaStatDisplay);
-

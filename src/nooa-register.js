@@ -68,6 +68,8 @@ export class NooaRegister extends DDDSuper(LitElement) {
         border: 2px solid var(--ddd-theme-default-error);
         border-radius: var(--ddd-radius-sm);
         font-size: var(--ddd-font-size-m);
+        width: 100%;
+        box-sizing: border-box;
       }
       input:focus {
         outline: none;
@@ -99,6 +101,19 @@ export class NooaRegister extends DDDSuper(LitElement) {
       }
       .login-link a:hover {
         text-decoration: underline;
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 480px) {
+        :host {
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-3);
+        }
+        .register-container {
+          padding: var(--ddd-spacing-4);
+        }
+        h1 {
+          font-size: var(--ddd-font-size-xl);
+        }
       }
     `];
   }
@@ -173,4 +188,3 @@ export class NooaRegister extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(NooaRegister.tag, NooaRegister);
-

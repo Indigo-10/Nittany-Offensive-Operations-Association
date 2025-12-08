@@ -24,6 +24,7 @@ export class NooaMenu extends DDDSuper(LitElement) {
     this.currentRoute = "/";
     this.menuItems = [
       { path: "/", label: "Home" },
+      { path: "/services", label: "Services" },
       { path: "/schedule", label: "Schedule" },
       { path: "/login", label: "Login" },
       { path: "/signup", label: "Sign Up" },
@@ -121,7 +122,7 @@ export class NooaMenu extends DDDSuper(LitElement) {
         font-weight: var(--ddd-font-weight-bold);
         margin-bottom: var(--ddd-spacing-6);
         padding-bottom: var(--ddd-spacing-4);
-        border-bottom: 2px solid var(--ddd-theme-default-error);
+        border-bottom: 2px solid var(--ddd-theme-default-roarLight);
       }
       .menu-items {
         display: flex;
@@ -133,17 +134,30 @@ export class NooaMenu extends DDDSuper(LitElement) {
         color: var(--ddd-theme-default-roarLight);
         text-decoration: none;
         border-radius: var(--ddd-radius-sm);
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease;
         font-weight: var(--ddd-font-weight-medium);
         cursor: pointer;
       }
       .menu-item:hover {
         background-color: var(--ddd-theme-default-nittanyNavy);
-        color: var(--ddd-theme-default-roarLight);
       }
       .menu-item.active {
         background-color: var(--ddd-theme-default-nittanyNavy);
-        color: var(--ddd-theme-default-roarLight);
+      }
+      
+      /* Mobile styles */
+      @media (max-width: 480px) {
+        .menu-button {
+          top: var(--ddd-spacing-2);
+          left: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2);
+        }
+        .menu-line {
+          width: 20px;
+        }
+        .menu-drawer {
+          width: 260px;
+        }
       }
     `];
   }

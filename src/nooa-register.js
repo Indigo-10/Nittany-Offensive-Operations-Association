@@ -44,19 +44,22 @@ export class NooaRegister extends DDDSuper(LitElement) {
         max-width: 400px;
         margin: 0 auto;
         padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .register-container {
-        background-color: var(--ddd-theme-default-roarLight);
-        border: 2px solid var(--ddd-theme-default-error);
+        background-color: var(--nooa-card-bg, var(--ddd-theme-default-white));
+        border: 2px solid var(--nooa-accent, var(--ddd-theme-default-error));
         border-radius: var(--ddd-radius-lg);
         padding: var(--ddd-spacing-6);
         box-shadow: var(--ddd-boxShadow-md);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       h1 {
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         font-size: var(--ddd-font-size-2xl);
         margin-bottom: var(--ddd-spacing-4);
         text-align: center;
+        transition: color 0.3s ease;
       }
       .register-form {
         display: flex;
@@ -65,20 +68,23 @@ export class NooaRegister extends DDDSuper(LitElement) {
       }
       input {
         padding: var(--ddd-spacing-3);
-        border: 2px solid var(--ddd-theme-default-error);
+        border: 2px solid var(--nooa-card-border, var(--ddd-theme-default-limestoneLight));
         border-radius: var(--ddd-radius-sm);
         font-size: var(--ddd-font-size-m);
         width: 100%;
         box-sizing: border-box;
+        background-color: var(--nooa-bg-secondary, var(--ddd-theme-default-white));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
       }
       input:focus {
         outline: none;
-        border-color: var(--ddd-theme-default-nittanyNavy);
+        border-color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
       }
       button {
         padding: var(--ddd-spacing-4);
-        background-color: var(--ddd-theme-default-error);
-        color: var(--ddd-theme-default-roarLight);
+        background-color: var(--nooa-accent, var(--ddd-theme-default-error));
+        color: var(--ddd-theme-default-white);
         border: none;
         border-radius: var(--ddd-radius-sm);
         font-size: var(--ddd-font-size-m);
@@ -87,17 +93,19 @@ export class NooaRegister extends DDDSuper(LitElement) {
         transition: background-color 0.3s ease;
       }
       button:hover {
-        background-color: var(--ddd-theme-default-nittanyNavy);
+        background-color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
       }
       .login-link {
         text-align: center;
         margin-top: var(--ddd-spacing-4);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        transition: color 0.3s ease;
       }
       .login-link a {
-        color: var(--ddd-theme-default-nittanyNavy);
+        color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
         text-decoration: none;
         font-weight: var(--ddd-font-weight-bold);
+        transition: color 0.3s ease;
       }
       .login-link a:hover {
         text-decoration: underline;

@@ -49,22 +49,26 @@ export class NooaStatDisplay extends DDDSuper(LitElement) {
         width: 100%;
       }
       .stat-card {
-        background-color: var(--ddd-theme-default-white);
+        background-color: var(--nooa-card-bg, var(--ddd-theme-default-white));
         border: var(--ddd-border-md);
+        border-color: var(--nooa-card-border, var(--ddd-theme-default-limestoneLight));
         border-radius: var(--ddd-radius-md);
         padding: var(--ddd-spacing-6);
         text-align: center;
         box-shadow: var(--ddd-boxShadow-sm);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       .stat-value {
         font-size: var(--ddd-font-size-3xl);
         font-weight: var(--ddd-font-weight-bold);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         margin-bottom: var(--ddd-spacing-2);
+        transition: color 0.3s ease;
       }
       .stat-label {
         font-size: var(--ddd-font-size-m);
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        transition: color 0.3s ease;
       }
       
       /* Mobile styles */

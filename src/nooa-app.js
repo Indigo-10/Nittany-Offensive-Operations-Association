@@ -30,6 +30,7 @@ export class NooaApp extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.route = window.location.pathname || "/";
+    this.isDarkMode = false;
     this.initRouting();
   }
 
@@ -37,7 +38,44 @@ export class NooaApp extends DDDSuper(LitElement) {
     return {
       ...super.properties,
       route: { type: String },
+      isDarkMode: { type: Boolean },
     };
+  }
+
+  // theme toggle functionality
+  _toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this._applyTheme();
+    this._saveThemePreference();
+  }
+
+  _applyTheme() {
+    if (this.isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
+  _saveThemePreference() {
+    localStorage.setItem('nooa-theme', this.isDarkMode ? 'dark' : 'light');
+  }
+
+  _loadThemePreference() {
+    const savedTheme = localStorage.getItem('nooa-theme');
+    if (savedTheme) {
+      this.isDarkMode = savedTheme === 'dark';
+      this._applyTheme();
+    } else {
+      // check system preference
+      this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this._applyTheme();
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._loadThemePreference();
   }
 
   static get styles() {
@@ -46,23 +84,77 @@ export class NooaApp extends DDDSuper(LitElement) {
       :host {
         display: block;
         min-height: 100vh;
-        background-color: var(--ddd-theme-default-roarLight);
+        background-color: var(--nooa-bg-primary, var(--ddd-theme-default-roarLight));
         overflow-x: hidden;
         max-width: 100vw;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
+
       .app-container {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         max-width: 100%;
         overflow-x: hidden;
+        position: relative;
+        background-color: var(--nooa-bg-primary, var(--ddd-theme-default-roarLight));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
+
       .content {
         flex: 1;
         padding: 0;
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
+      }
+
+      /* theme toggle button - top right */
+      .theme-toggle {
+        position: fixed;
+        top: var(--ddd-spacing-3);
+        right: var(--ddd-spacing-3);
+        z-index: 1000;
+      }
+
+      .theme-toggle button {
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        border: var(--ddd-border-md);
+        border-radius: var(--ddd-radius-md);
+        background-color: var(--nooa-card-bg, var(--ddd-theme-default-white));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        font-weight: var(--ddd-font-weight-bold);
+        font-size: var(--ddd-font-size-s);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: var(--ddd-spacing-2);
+        box-shadow: var(--ddd-boxShadow-sm);
+      }
+
+      .theme-toggle button:hover {
+        transform: scale(1.05);
+        box-shadow: var(--ddd-boxShadow-md);
+      }
+
+      .theme-icon {
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 768px) {
+        .theme-toggle {
+          top: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+        }
+        .theme-toggle button {
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-xs);
+        }
+        .theme-icon {
+          font-size: 1rem;
+        }
       }
     `];
   }
@@ -114,6 +206,12 @@ export class NooaApp extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="app-container">
+        <div class="theme-toggle">
+          <button @click="${this._toggleTheme}" title="toggle theme">
+            <span class="theme-icon">${this.isDarkMode ? '☀️' : '🌙'}</span>
+            <span>${this.isDarkMode ? 'light' : 'dark'}</span>
+          </button>
+        </div>
         <nooa-header></nooa-header>
         <nooa-menu 
           .currentRoute="${this.route}"

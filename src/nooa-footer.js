@@ -54,22 +54,24 @@ export class NooaFooter extends DDDSuper(LitElement) {
         font-size: var(--ddd-font-size-l);
         font-weight: var(--ddd-font-weight-bold);
         margin-bottom: var(--ddd-spacing-3);
-        color: var(--ddd-theme-default-error);
+        color: var(--ddd-theme-default-roarLight);
       }
       .footer-section a {
         display: block;
         color: var(--ddd-theme-default-roarLight);
         text-decoration: none;
         margin-bottom: var(--ddd-spacing-2);
-        transition: color 0.3s ease;
+        transition: opacity 0.3s ease;
+        opacity: 0.8;
       }
       .footer-section a:hover {
-        color: var(--ddd-theme-default-error);
+        opacity: 1;
+        text-decoration: underline;
       }
       .powered-by {
         text-align: center;
         padding-top: var(--ddd-spacing-4);
-        border-top: 1px solid var(--ddd-theme-default-error);
+        border-top: 1px solid var(--ddd-theme-default-roarLight);
         font-size: var(--ddd-font-size-s);
         color: var(--ddd-theme-default-roarLight);
       }

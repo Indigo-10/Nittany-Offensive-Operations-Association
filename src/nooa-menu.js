@@ -60,7 +60,11 @@ export class NooaMenu extends DDDSuper(LitElement) {
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
         box-shadow: var(--ddd-boxShadow-md);
         transition: background-color 0.3s ease;
       }
@@ -68,20 +72,20 @@ export class NooaMenu extends DDDSuper(LitElement) {
         background-color: var(--ddd-theme-default-nittanyNavy);
       }
       .menu-line {
-        width: 24px;
-        height: 3px;
+        width: 22px;
+        height: 2px;
         background-color: var(--ddd-theme-default-roarLight);
         border-radius: 2px;
         transition: all 0.3s ease;
       }
       .menu-button.open .menu-line:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
+        transform: translateY(7px) rotate(45deg);
       }
       .menu-button.open .menu-line:nth-child(2) {
         opacity: 0;
       }
       .menu-button.open .menu-line:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
+        transform: translateY(-7px) rotate(-45deg);
       }
       .menu-overlay {
         position: fixed;
@@ -110,8 +114,10 @@ export class NooaMenu extends DDDSuper(LitElement) {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         box-shadow: var(--ddd-boxShadow-lg);
-        padding: var(--ddd-spacing-6) var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4);
+        padding-top: 70px;
         overflow-y: auto;
+        box-sizing: border-box;
       }
       .menu-drawer.open {
         transform: translateX(0);
@@ -120,8 +126,8 @@ export class NooaMenu extends DDDSuper(LitElement) {
         color: var(--ddd-theme-default-roarLight);
         font-size: var(--ddd-font-size-xl);
         font-weight: var(--ddd-font-weight-bold);
-        margin-bottom: var(--ddd-spacing-6);
-        padding-bottom: var(--ddd-spacing-4);
+        margin-bottom: var(--ddd-spacing-4);
+        padding-bottom: var(--ddd-spacing-3);
         border-bottom: 2px solid var(--ddd-theme-default-roarLight);
       }
       .menu-items {
@@ -150,13 +156,21 @@ export class NooaMenu extends DDDSuper(LitElement) {
         .menu-button {
           top: var(--ddd-spacing-2);
           left: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-2);
+          width: 40px;
+          height: 40px;
         }
         .menu-line {
-          width: 20px;
+          width: 18px;
+        }
+        .menu-button.open .menu-line:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+        .menu-button.open .menu-line:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
         }
         .menu-drawer {
           width: 260px;
+          padding-top: 60px;
         }
       }
     `];

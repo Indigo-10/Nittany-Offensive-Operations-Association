@@ -65,12 +65,13 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
         justify-items: center;
       }
       .article-card {
-        background-color: var(--ddd-theme-default-white);
+        background-color: var(--nooa-card-bg, var(--ddd-theme-default-white));
         border: var(--ddd-border-md);
+        border-color: var(--nooa-card-border, var(--ddd-theme-default-limestoneLight));
         border-radius: var(--ddd-radius-md);
         padding: var(--ddd-spacing-3);
         box-shadow: var(--ddd-boxShadow-sm);
-        transition: box-shadow 0.3s ease;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         width: 100%;
         max-width: 380px;
         display: flex;
@@ -85,26 +86,30 @@ export class NooaNewsGrid extends DDDSuper(LitElement) {
       .article-title {
         font-size: var(--ddd-font-size-m);
         font-weight: var(--ddd-font-weight-bold);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         margin-bottom: var(--ddd-spacing-2);
         line-height: 1.3;
+        transition: color 0.3s ease;
       }
       .article-date {
         font-size: var(--ddd-font-size-s);
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--nooa-text-secondary, var(--ddd-theme-default-slateGray));
         margin-bottom: var(--ddd-spacing-2);
+        transition: color 0.3s ease;
       }
       .article-excerpt {
         font-size: var(--ddd-font-size-s);
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
         line-height: 1.5;
         flex: 1;
+        transition: color 0.3s ease;
       }
       .read-more {
         font-size: var(--ddd-font-size-s);
-        color: var(--ddd-theme-default-nittanyNavy);
+        color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
         font-weight: var(--ddd-font-weight-bold);
         margin-top: var(--ddd-spacing-3);
+        transition: color 0.3s ease;
       }
       .article-card:hover .read-more {
         text-decoration: underline;

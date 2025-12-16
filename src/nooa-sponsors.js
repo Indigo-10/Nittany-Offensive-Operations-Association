@@ -49,8 +49,9 @@ export class NooaSponsors extends DDDSuper(LitElement) {
       }
       h2 {
         font-size: var(--ddd-font-size-2xl);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         margin-bottom: var(--ddd-spacing-6);
+        transition: color 0.3s ease;
       }
       .sponsors-grid {
         display: grid;

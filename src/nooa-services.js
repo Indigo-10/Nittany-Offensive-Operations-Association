@@ -34,12 +34,14 @@ export class NooaServices extends DDDSuper(LitElement) {
       :host {
         display: block;
         width: 100%;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .page-header {
         text-align: center;
         padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
-        background-color: var(--ddd-theme-default-nittanyNavy);
-        color: var(--ddd-theme-default-roarLight);
+        background-color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
+        color: var(--ddd-theme-default-white);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .page-header h1 {
         font-size: var(--ddd-font-size-3xl);
@@ -52,13 +54,17 @@ export class NooaServices extends DDDSuper(LitElement) {
       }
       .service-section {
         padding: var(--ddd-spacing-10) var(--ddd-spacing-4);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
-      .service-section.beige {
-        background-color: var(--ddd-theme-default-roarLight);
+      /* primary sections (light bg in light mode, dark bg in dark mode) */
+      .service-section.primary {
+        background-color: var(--nooa-bg-primary, var(--ddd-theme-default-roarLight));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
       }
-      .service-section.red {
-        background-color: var(--ddd-theme-default-error);
-        color: var(--ddd-theme-default-roarLight);
+      /* accent sections (red/coral bg - stays vibrant in both modes) */
+      .service-section.accent {
+        background-color: var(--nooa-accent, var(--ddd-theme-default-error));
+        color: var(--ddd-theme-default-white);
       }
       .service-inner {
         max-width: 1000px;
@@ -68,22 +74,23 @@ export class NooaServices extends DDDSuper(LitElement) {
         font-size: var(--ddd-font-size-2xl);
         font-weight: var(--ddd-font-weight-bold);
         margin-bottom: var(--ddd-spacing-4);
+        transition: color 0.3s ease;
       }
-      .service-section.beige .service-title {
-        color: var(--ddd-theme-default-error);
+      .service-section.primary .service-title {
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
       }
-      .service-section.red .service-title {
-        color: var(--ddd-theme-default-roarLight);
+      .service-section.accent .service-title {
+        color: var(--ddd-theme-default-white);
       }
       .service-content {
         font-size: var(--ddd-font-size-m);
         line-height: 1.8;
       }
-      .service-section.beige .service-content {
-        color: var(--ddd-theme-default-coalyGray);
+      .service-section.primary .service-content {
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
       }
-      .service-section.red .service-content {
-        color: var(--ddd-theme-default-roarLight);
+      .service-section.accent .service-content {
+        color: var(--ddd-theme-default-white);
       }
       .service-content p {
         margin-bottom: var(--ddd-spacing-4);
@@ -94,8 +101,34 @@ export class NooaServices extends DDDSuper(LitElement) {
         margin-top: var(--ddd-spacing-6);
         margin-bottom: var(--ddd-spacing-3);
       }
-      .service-section.beige .service-content h3 {
-        color: var(--ddd-theme-default-nittanyNavy);
+      .service-section.primary .service-content h3 {
+        color: var(--nooa-link, var(--ddd-theme-default-nittanyNavy));
+      }
+      .service-section.accent .service-content h3 {
+        color: var(--ddd-theme-default-white);
+      }
+      
+      :host-context([data-theme="dark"]) .page-header {
+        background-color: var(--ddd-theme-default-nittanyNavy);
+        color: var(--ddd-theme-default-white);
+      }
+      :host-context([data-theme="dark"]) .service-section.primary {
+        background-color: var(--ddd-theme-default-potentialMidnight);
+        color: var(--ddd-theme-default-white);
+      }
+      :host-context([data-theme="dark"]) .service-section.primary .service-title {
+        color: var(--ddd-theme-default-discoveryCoral);
+      }
+      :host-context([data-theme="dark"]) .service-section.primary .service-content h3 {
+        color: var(--ddd-theme-default-pughBlue);
+      }
+      :host-context([data-theme="dark"]) .service-section.accent {
+        background-color: var(--ddd-theme-default-beaverBlue);
+        color: var(--ddd-theme-default-white);
+      }
+      :host-context([data-theme="dark"]) .service-section.accent .service-title,
+      :host-context([data-theme="dark"]) .service-section.accent .service-content h3 {
+        color: var(--ddd-theme-default-white);
       }
       .service-content ul {
         margin-left: var(--ddd-spacing-6);
@@ -149,7 +182,7 @@ export class NooaServices extends DDDSuper(LitElement) {
       </div>
 
       <!-- Red Team Section -->
-      <section id="red-team" class="service-section beige">
+      <section id="red-team" class="service-section primary">
         <div class="service-inner">
           <h2 class="service-title">Red Team Operations</h2>
           <div class="service-content">
@@ -175,7 +208,7 @@ export class NooaServices extends DDDSuper(LitElement) {
       </section>
 
       <!-- Network Penetration Test Section -->
-      <section id="network-pentest" class="service-section red">
+      <section id="network-pentest" class="service-section accent">
         <div class="service-inner">
           <h2 class="service-title">Network Penetration Testing</h2>
           <div class="service-content">
@@ -201,7 +234,7 @@ export class NooaServices extends DDDSuper(LitElement) {
       </section>
 
       <!-- Web Application Test Section -->
-      <section id="webapp-test" class="service-section beige">
+      <section id="webapp-test" class="service-section primary">
         <div class="service-inner">
           <h2 class="service-title">Web Application Testing</h2>
           <div class="service-content">

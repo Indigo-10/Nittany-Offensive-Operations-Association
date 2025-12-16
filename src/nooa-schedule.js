@@ -42,6 +42,7 @@ export class NooaSchedule extends DDDSuper(LitElement) {
     css`
       :host {
         display: block;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .schedule-container {
         padding: var(--ddd-spacing-4);
@@ -50,9 +51,10 @@ export class NooaSchedule extends DDDSuper(LitElement) {
       }
       h2 {
         font-size: var(--ddd-font-size-2xl);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         margin-bottom: var(--ddd-spacing-6);
         text-align: center;
+        transition: color 0.3s ease;
       }
       .schedule-list {
         display: flex;
@@ -60,8 +62,9 @@ export class NooaSchedule extends DDDSuper(LitElement) {
         gap: var(--ddd-spacing-4);
       }
       .schedule-item {
-        background-color: var(--ddd-theme-default-white);
+        background-color: var(--nooa-card-bg, var(--ddd-theme-default-white));
         border: var(--ddd-border-md);
+        border-color: var(--nooa-card-border, var(--ddd-theme-default-limestoneLight));
         border-radius: var(--ddd-radius-md);
         padding: var(--ddd-spacing-4);
         display: grid;
@@ -69,28 +72,32 @@ export class NooaSchedule extends DDDSuper(LitElement) {
         gap: var(--ddd-spacing-4);
         align-items: center;
         box-shadow: var(--ddd-boxShadow-sm);
-        transition: box-shadow 0.3s ease;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
       }
       .schedule-item:hover {
         box-shadow: var(--ddd-boxShadow-md);
       }
       .schedule-date {
         font-weight: var(--ddd-font-weight-bold);
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
+        transition: color 0.3s ease;
       }
       .schedule-time {
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         font-weight: var(--ddd-font-weight-medium);
+        transition: color 0.3s ease;
       }
       .schedule-title {
         font-size: var(--ddd-font-size-l);
         font-weight: var(--ddd-font-weight-medium);
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
+        transition: color 0.3s ease;
       }
       .schedule-location {
         font-size: var(--ddd-font-size-s);
-        color: var(--ddd-theme-default-coalyGray);
+        color: var(--nooa-text-secondary, var(--ddd-theme-default-slateGray));
         text-align: right;
+        transition: color 0.3s ease;
       }
       
       /* Mobile styles */

@@ -41,12 +41,14 @@ export class NooaHome extends DDDSuper(LitElement) {
         width: 100%;
         max-width: 100vw;
         overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .section {
         width: 100%;
         max-width: 100vw;
         padding: var(--ddd-spacing-6) 0;
         overflow: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .section-inner {
         width: 100%;
@@ -61,24 +63,23 @@ export class NooaHome extends DDDSuper(LitElement) {
       }
       .section-title {
         text-align: center;
-        color: var(--ddd-theme-default-error);
+        color: var(--nooa-accent, var(--ddd-theme-default-error));
         font-size: var(--ddd-font-size-2xl);
         font-weight: var(--ddd-font-weight-bold);
         margin-bottom: var(--ddd-spacing-4);
         width: 100%;
         display: block;
+        transition: color 0.3s ease;
       }
-      .section.news {
-        background-color: var(--ddd-theme-default-roarLight);
-      }
-      .section.join {
-        background-color: var(--ddd-theme-default-white);
-      }
+      .section.news,
       .section.stats {
-        background-color: var(--ddd-theme-default-roarLight);
+        background-color: var(--nooa-bg-primary, var(--ddd-theme-default-roarLight));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
       }
+      .section.join,
       .section.sponsors {
-        background-color: var(--ddd-theme-default-white);
+        background-color: var(--nooa-bg-secondary, var(--ddd-theme-default-white));
+        color: var(--nooa-text-primary, var(--ddd-theme-default-coalyGray));
       }
       
       /* Mobile styles */
